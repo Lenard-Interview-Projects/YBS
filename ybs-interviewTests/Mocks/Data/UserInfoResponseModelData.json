@@ -1,0 +1,48 @@
+{
+    "person": {
+        "id": "197340444@N07",
+        "nsid": "197340444@N07",
+        "ispro": 0,
+        "is_deleted": 0,
+        "iconserver": "65535",
+        "iconfarm": 66,
+        "path_alias": null,
+        "has_stats": 0,
+        "username": {
+            "_content": "vintagebunnyx3"
+        },
+        "realname": {
+            "_content": "Miyoko Kat\u014d"
+        },
+        "location": {
+            "_content": ""
+        },
+        "description": {
+            "_content": ""
+        },
+        "photosurl": {
+            "_content": "https:\/\/www.flickr.com\/photos\/197340444@N07\/"
+        },
+        "profileurl": {
+            "_content": "https:\/\/www.flickr.com\/people\/197340444@N07\/"
+        },
+        "mobileurl": {
+            "_content": "https:\/\/m.flickr.com\/photostream.gne?id=197319114"
+        },
+        "photos": {
+            "firstdatetaken": {
+                "_content": "2023-01-24 01:28:33"
+            },
+            "firstdate": {
+                "_content": "1674542329"
+            },
+            "count": {
+                "_content": 139
+            }
+        },
+        "has_adfree": 0,
+        "has_free_standard_shipping": 0,
+        "has_free_educational_resources": 0
+    },
+    "stat": "ok"
+}
