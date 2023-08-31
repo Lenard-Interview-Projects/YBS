@@ -12,8 +12,6 @@ struct SearchView: View {
     @StateObject private var viewModel: SearchViewModel
     @State private var selectedTagMode = false
 
-    private let userServices: UserServicesProtocol
-    private let photoServices: PhotoServicesProtocol
     private var columnGrid = [GridItem(.flexible(),
                                        spacing: 8,
                                        alignment: .top),
@@ -21,13 +19,9 @@ struct SearchView: View {
                                        spacing: 8,
                                        alignment: .top)]
 
-    init(searchServices: SearchServicesProtocol,
-         userServices: UserServicesProtocol,
-         photoServices: PhotoServicesProtocol) {
+    init() {
 
-        self._viewModel = StateObject(wrappedValue: SearchViewModel(searchServices: searchServices))
-        self.userServices = userServices
-        self.photoServices = photoServices
+        self._viewModel = StateObject(wrappedValue: SearchViewModel())
     }
 
     var body: some View {
@@ -92,9 +86,7 @@ struct SearchView: View {
                         }
                         else {
                             ForEach(viewModel.images, id:\.id) { item in
-                                NavigationLink(destination: { PhotoDetailsView(photoId: item.id,
-                                                                               photoServices: photoServices,
-                                                                               userServices: userServices) })
+                                NavigationLink(destination: { PhotoDetailsView(photoId: item.id) })
                                 {
                                     SearchItemView(photoModel: item)
                                 }
@@ -139,8 +131,6 @@ struct SearchView: View {
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView(searchServices: SearchServices(),
-                   userServices: UserServices(),
-                   photoServices: PhotoServices())
+        SearchView()
     }
 }

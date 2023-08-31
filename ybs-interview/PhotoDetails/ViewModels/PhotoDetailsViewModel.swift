@@ -6,8 +6,9 @@
 //
 
 import Foundation
-import YBSServices
 import Combine
+import YBSServices
+import YBSInjection
 
 class PhotoDetailsViewModel: ObservableObject {
     @Published var photo = PhotoModel()
@@ -17,16 +18,21 @@ class PhotoDetailsViewModel: ObservableObject {
     @Published var errorFound = false
 
     private var photoId = ""
-    private var photoServices: PhotoServicesProtocol?
     private var cancellables: Set<AnyCancellable> = []
+
+    @Injected private var photoServices: PhotoServicesProtocol
 
     var getPhotoId: String {
         return photoId
     }
 
-    init(photoId: String, photoServices: PhotoServicesProtocol) {
-        self.photoServices = photoServices
+    init(photoId: String) {
         self.photoId = photoId
+    }
+
+    convenience init(photoId: String, photoServices: PhotoServicesProtocol) {
+        self.init(photoId: photoId)
+        self.photoServices = photoServices
     }
 
     deinit {
@@ -44,8 +50,6 @@ class PhotoDetailsViewModel: ObservableObject {
     }
 
     private func fetchResultFromService() {
-        guard let photoServices = photoServices else { return }
-
         photoServices
             .fetchPhotoInfo(photoId: photoId)
             .sink(receiveCompletion: { [weak self] completion in

@@ -83,6 +83,9 @@
 		1475AB552A9C184B0008BE45 /* UserPhotosResponseModelData.json in Resources */ = {isa = PBXBuildFile; fileRef = 1475AB4D2A9C16E70008BE45 /* UserPhotosResponseModelData.json */; };
 		1475AB562A9C184B0008BE45 /* UserInfoResponseModelData.json in Resources */ = {isa = PBXBuildFile; fileRef = 1475AB4F2A9C171F0008BE45 /* UserInfoResponseModelData.json */; };
 		1475AB572A9C184B0008BE45 /* SearchResponseModelData.json in Resources */ = {isa = PBXBuildFile; fileRef = 1475AB4B2A9C16A70008BE45 /* SearchResponseModelData.json */; };
+		14EA16182AA11F0F00B392E8 /* YBSInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EA16172AA11F0F00B392E8 /* YBSInjection.swift */; };
+		14EA161E2AA11F6600B392E8 /* Injected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EA161D2AA11F6600B392E8 /* Injected.swift */; };
+		14EA161F2AA11F9C00B392E8 /* libYBSInjection.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14EA16152AA11F0F00B392E8 /* libYBSInjection.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +107,15 @@
 
 /* Begin PBXCopyFilesBuildPhase section */
 		1424292D2A97C20C0043C0A0 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14EA16132AA11F0F00B392E8 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/$(PRODUCT_NAME)";
@@ -189,6 +201,9 @@
 		1475AB4D2A9C16E70008BE45 /* UserPhotosResponseModelData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UserPhotosResponseModelData.json; sourceTree = "<group>"; };
 		1475AB4F2A9C171F0008BE45 /* UserInfoResponseModelData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UserInfoResponseModelData.json; sourceTree = "<group>"; };
 		1475AB512A9C174A0008BE45 /* PhotoInfoResponseModelData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PhotoInfoResponseModelData.json; sourceTree = "<group>"; };
+		14EA16152AA11F0F00B392E8 /* libYBSInjection.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libYBSInjection.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		14EA16172AA11F0F00B392E8 /* YBSInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBSInjection.swift; sourceTree = "<group>"; };
+		14EA161D2AA11F6600B392E8 /* Injected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injected.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +218,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14EA161F2AA11F9C00B392E8 /* libYBSInjection.a in Frameworks */,
 				1475AAC32A98F68D0008BE45 /* libYBSServices.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,6 +232,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		1449B7A22A97531300D6B733 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14EA16122AA11F0F00B392E8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -282,6 +305,7 @@
 				1449B79E2A97531300D6B733 /* ybs-interviewTests */,
 				1449B7A82A97531300D6B733 /* ybs-interviewUITests */,
 				142429302A97C20C0043C0A0 /* YBSServices */,
+				14EA16162AA11F0F00B392E8 /* YBSInjection */,
 				1449B78C2A97530F00D6B733 /* Products */,
 				1475AAC22A98F68D0008BE45 /* Frameworks */,
 				1424293A2A97C3A60043C0A0 /* README.md */,
@@ -295,6 +319,7 @@
 				1449B79B2A97531300D6B733 /* ybs-interviewTests.xctest */,
 				1449B7A52A97531300D6B733 /* ybs-interviewUITests.xctest */,
 				1424292F2A97C20C0043C0A0 /* libYBSServices.a */,
+				14EA16152AA11F0F00B392E8 /* libYBSInjection.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -601,6 +626,23 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		14EA16162AA11F0F00B392E8 /* YBSInjection */ = {
+			isa = PBXGroup;
+			children = (
+				14EA161C2AA11F5900B392E8 /* Wrappers */,
+				14EA16172AA11F0F00B392E8 /* YBSInjection.swift */,
+			);
+			path = YBSInjection;
+			sourceTree = "<group>";
+		};
+		14EA161C2AA11F5900B392E8 /* Wrappers */ = {
+			isa = PBXGroup;
+			children = (
+				14EA161D2AA11F6600B392E8 /* Injected.swift */,
+			);
+			path = Wrappers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -674,6 +716,23 @@
 			productReference = 1449B7A52A97531300D6B733 /* ybs-interviewUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		14EA16142AA11F0F00B392E8 /* YBSInjection */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14EA161B2AA11F0F00B392E8 /* Build configuration list for PBXNativeTarget "YBSInjection" */;
+			buildPhases = (
+				14EA16112AA11F0F00B392E8 /* Sources */,
+				14EA16122AA11F0F00B392E8 /* Frameworks */,
+				14EA16132AA11F0F00B392E8 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YBSInjection;
+			productName = YBSInjection;
+			productReference = 14EA16152AA11F0F00B392E8 /* libYBSInjection.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -699,6 +758,9 @@
 						CreatedOnToolsVersion = 14.3.1;
 						TestTargetID = 1449B78A2A97530F00D6B733;
 					};
+					14EA16142AA11F0F00B392E8 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
 				};
 			};
 			buildConfigurationList = 1449B7862A97530F00D6B733 /* Build configuration list for PBXProject "ybs-interview" */;
@@ -718,6 +780,7 @@
 				1449B79A2A97531300D6B733 /* ybs-interviewTests */,
 				1449B7A42A97531300D6B733 /* ybs-interviewUITests */,
 				1424292E2A97C20C0043C0A0 /* YBSServices */,
+				14EA16142AA11F0F00B392E8 /* YBSInjection */,
 			);
 		};
 /* End PBXProject section */
@@ -846,6 +909,15 @@
 			files = (
 				1449B7AA2A97531300D6B733 /* ybs_interviewUITests.swift in Sources */,
 				1449B7AC2A97531300D6B733 /* ybs_interviewUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14EA16112AA11F0F00B392E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14EA16182AA11F0F00B392E8 /* YBSInjection.swift in Sources */,
+				14EA161E2AA11F6600B392E8 /* Injected.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1142,6 +1214,32 @@
 			};
 			name = Release;
 		};
+		14EA16192AA11F0F00B392E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FAZ3Z6W4LW;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		14EA161A2AA11F0F00B392E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FAZ3Z6W4LW;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1186,6 +1284,15 @@
 			buildConfigurations = (
 				1449B7B62A97531300D6B733 /* Debug */,
 				1449B7B72A97531300D6B733 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		14EA161B2AA11F0F00B392E8 /* Build configuration list for PBXNativeTarget "YBSInjection" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14EA16192AA11F0F00B392E8 /* Debug */,
+				14EA161A2AA11F0F00B392E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

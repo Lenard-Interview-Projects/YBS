@@ -6,8 +6,9 @@
 //
 
 import Foundation
-import YBSServices
 import Combine
+import YBSServices
+import YBSInjection
 
 class UserProfileViewModel: ObservableObject {
     @Published var user = UserModel()
@@ -20,11 +21,16 @@ class UserProfileViewModel: ObservableObject {
 
     private var currentPage = 1
     private var userId = ""
-    private var userServices: UserServicesProtocol?
     private var cancellables: Set<AnyCancellable> = []
 
-    init(userId: String, userServices: UserServicesProtocol) {
+    @Injected private var userServices: UserServicesProtocol
+
+    init(userId: String) {
         self.userId = userId
+    }
+
+    convenience init(userId: String, userServices: UserServicesProtocol) {
+        self.init(userId: userId)
         self.userServices = userServices
     }
 
@@ -51,8 +57,6 @@ class UserProfileViewModel: ObservableObject {
     }
 
     private func fetchUserInfoResultsFromService() {
-        guard let userServices = userServices else { return }
-
         userServices
             .getUserInfo(userId: userId)
             .sink(receiveCompletion: { [weak self] completion in
@@ -83,8 +87,6 @@ class UserProfileViewModel: ObservableObject {
     }
 
     private func fetchGalleryResultsFromService() {
-        guard let userServices = userServices else { return }
-
         userServices
             .getUserPhotos(userId: userId, perPage: 20, page: currentPage)
             .sink(receiveCompletion: { [weak self] completion in

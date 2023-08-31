@@ -14,15 +14,8 @@ struct PhotoDetailsView: View {
     @StateObject private var viewModel: PhotoDetailsViewModel
     @State private var extraDetail = false
 
-    private var userServices: UserServicesProtocol
-
-    init(photoId: String,
-         photoServices: PhotoServicesProtocol,
-         userServices: UserServicesProtocol) {
-
-        _viewModel = StateObject(wrappedValue: PhotoDetailsViewModel(photoId: photoId,
-                                                                     photoServices: photoServices))
-        self.userServices = userServices
+    init(photoId: String) {
+        _viewModel = StateObject(wrappedValue: PhotoDetailsViewModel(photoId: photoId))
     }
 
     var body: some View {
@@ -63,8 +56,7 @@ struct PhotoDetailsView: View {
                     }
                     .overlay(alignment: .bottom) {
                         LazyVStack(alignment: .leading) {
-                            NavigationLink(destination: { UserProfileView(userId: viewModel.photo.owner.nsid,
-                                                                          userServices: userServices) }) {
+                            NavigationLink(destination: { UserProfileView(userId: viewModel.photo.owner.nsid) }) {
                                 UserCardDetails(realname: viewModel.photo.owner.realname,
                                                 userName: viewModel.photo.owner.username,
                                                 iconfarm: viewModel.photo.owner.iconfarm,
@@ -162,8 +154,6 @@ struct PhotoDetailsView: View {
 
 struct PhotoDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        PhotoDetailsView(photoId: "",
-                         photoServices: PhotoServices(),
-                         userServices: UserServices())
+        PhotoDetailsView(photoId: "")
     }
 }

@@ -14,14 +14,8 @@ struct UserProfileView: View {
     @StateObject private var viewModel: UserProfileViewModel
     @State private var showSheet = true
 
-    private var userServices: UserServicesProtocol
-
-    init(userId: String,
-         userServices: UserServicesProtocol) {
-
-        self._viewModel = StateObject(wrappedValue: UserProfileViewModel(userId: userId,
-                                                                    userServices: userServices))
-        self.userServices = userServices
+    init(userId: String) {
+        self._viewModel = StateObject(wrappedValue: UserProfileViewModel(userId: userId))
     }
 
     var body: some View {
@@ -170,6 +164,6 @@ struct UserProfileView: View {
 
 struct UserProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        UserProfileView(userId: "12037949754@N01", userServices: UserServices())
+        UserProfileView(userId: "12037949754@N01")
     }
 }

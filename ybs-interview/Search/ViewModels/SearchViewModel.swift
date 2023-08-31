@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import YBSServices
+import YBSInjection
 
 class SearchViewModel: ObservableObject {
     @Published var images: [SearchPhotoModel] = []
@@ -30,13 +31,16 @@ class SearchViewModel: ObservableObject {
     private var currentPage = 1
     private var searchPublisher: AnyPublisher<SearchResponseModel, Error>? = nil
     private var cancellables: Set<AnyCancellable> = []
-    private let searchServices: SearchServicesProtocol?
+
+    @Injected private var searchServices: SearchServicesProtocol
 
     public var doesContainTags: Bool {
         return !searchQuery.toListOfTags().isEmpty
     }
 
-    init(searchServices: SearchServicesProtocol) {
+    convenience init(searchServices: SearchServicesProtocol) {
+        self.init()
+        
         self.searchServices = searchServices
     }
 
@@ -92,15 +96,11 @@ class SearchViewModel: ObservableObject {
     }
 
     private func setSearchRecentPublisher() {
-        guard let searchServices = searchServices else { return }
-
         searchPublisher = searchServices.fetchRecentResults(page: currentPage)
         fetchSearchResultsFromService()
     }
 
     private func setSearchQueryPublisher() {
-        guard let searchServices = searchServices else { return }
-
         searchPublisher = searchServices.fetchSearchResults(search: searchQuery, tagMode: selectedTagMode, page: currentPage)
         fetchSearchResultsFromService()
     }
